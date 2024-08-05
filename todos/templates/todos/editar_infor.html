@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+
+{% block page_title %}
+    Adicionar Equipamento
+    
+{% endblock page_title %}
+
+       
+    
+{%block cont%}    
+    <h1>ENTRADA DE EQUIPAMENTOS</h1>    
+{%endblock cont%}
+    
+{%block ban%}
+    <a href=""># HOME</a> <br>
+{%endblock ban%}
+
+
+{% block content %}
+    <h1>Adicionar Equipamento</h1>
+    
+    <form  method="POST">
+        {% csrf_token %}
+        {%for form in form%}
+            {{ form }}
+        {%endfor%}
+        <button type="submit" class="btn btn-danger">Salvar</button>
+        <a href="{%url 'toda_list_saida'%}" class="btn btn-primary">Cancelar</a>
+    </form>
+
+{% endblock content %}

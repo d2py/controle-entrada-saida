@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block page_title %}
+    ENTREGAR
+{% endblock page_title %}
+
+{% block cont%}
+    <h1>PRONTO PARA ENTREGA OU RETIRADA</h1>
+{%endblock cont%}
+{% block ban %}
+            <a href="#"># ENTRADA DO EQUIPAMENTO</a> <br>
+            <a href="#"># PENDENTE POR FALTA DE PEÇA</a> <br>
+            <a href="#"># PRONTO PARA ENTREGA</a>
+            <a href=""># EQUIPAMENTOS ENTREGUE/RETIRADO</a>
+{% endblock ban %}
+
+{% block content %} 
+    
+  
+<table class="table  table-bordered table-striped" >
+    <thead class="thead-dark">
+        <tr >
+            
+            <th scope="col"> Requisição </th>
+            <th scope="col"> Ano </th>
+            <th scope="col"> Local </th>
+            <th scope="col"> Patrimonio </th>
+            <th scope="col"> Solicitante </th>
+            <th scope="col"> Equipamento </th>
+            <th scope="col"> Data de Entrada </th>
+            
+            <th scope="col"> Ações </th>
+        </tr>
+    </thead>
+    
+    {% for todo in todos %}
+        <tr>
+            
+            {% if todo.concluido == "concluido" and not todo.ret_ent == "R" and not todo.ret_ent == "E" %}
+                
+                <td> {{ todo.requisicao }} </td>
+                <td> {{ todo.ano }} </td>
+                <td> {{ todo.local }} </td>
+                <td> {{ todo.patrimonio }} </td>
+                <td> {{ todo.solicitante }} </td>
+                <td> {{ todo.equipamento }} </td>
+                <td> {{ todo.dataentrada}} </td>
+                
+                
+                <td>
+                    <a href="#" class="btn btn-secondary btn-sm" >Editar</a>
+                    <a href="{% url 'todo_atualizar' pk=todo.pk %}" class="btn btn-primary btn-sm" >Saída</a>
+                    
+                </td>
+            {% else %}
+                
+                
+            {%endif%}
+                                
+        </tr>
+    {% endfor %}
+                
+    
+</table>
+  
+{% endblock content %}

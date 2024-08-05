@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+
+{% block page_title %}
+    {% if entradamanutencao.pk %}
+        Editar informação
+    {% else %}
+        Nova Tarefa
+    {% endif%}
+{% endblock page_title %}
+
+       
+    
+{%block cont%}
+    {% if entradamanutencao.pk %}
+        <h1>EDITAR INFORMAÇÃO DE CADASTRO</h1>
+    {% else %}
+        <h1>ENTRADA DE EQUIPAMENTOS</h1>
+    {% endif%}
+{%endblock cont%}
+    
+{%block ban%}
+    <a href=""># HOME</a> <br>
+{%endblock ban%}
+
+
+{% block content %}
+    {% if entradamanutencao.pk %}
+        <h1>Editar informação</h1>
+    {% else %}
+        <h1>Adicionar Equipamento</h1>
+    {% endif%}
+    <form method="POST">
+        {% csrf_token %}
+        
+        {{ form | crispy}}
+        
+        <button type="submit" class="btn btn-danger" >Salvar</button>
+        <a href="{% url 'toda_list_saida' %}" class="btn btn-primary">Cancelar</a>  
+    </form>
+
+{% endblock content %} 
+
+      
+       
+
+    
