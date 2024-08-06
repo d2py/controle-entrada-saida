@@ -9,7 +9,7 @@ from todos.views import todo_list, editar_infor
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", TodoListaView.as_view(), name="todo_list"),
+    path("list-entrada/", TodoListaView.as_view(), name="todo_list"),
     path("atualizar/<int:pk>", TodoUpdateView.as_view(), name="todo_atualizar"),
     path("concluir/<int:pk>", TodoCompleteView.as_view(), name="todo_concluido"),
     # TABELA DE ENTREGA
