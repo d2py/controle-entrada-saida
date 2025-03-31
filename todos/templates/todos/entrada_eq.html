@@ -10,25 +10,25 @@
        
     
 {%block cont%}    
-    <h1>RETIRADA DO EQUIPAMENTOS</h1>    
+    <h1>ENTRADA DO EQUIPAMENTO</h1>    
 {%endblock cont%}
     
 {%block ban%}
-    <a href=""># HOME</a> <br>
+    <a href="{% url 'todo_list'%}"># HOME</a> <br>
 {%endblock ban%}
 
 
 {% block content %}
-    <h1>RESPONSAVEL PELA RETIRADA DO EQUIPAMENTOS</h1>
+    <h1>Entrada de equipamento</h1>
     
-    <form  method="POST">
+    <form action="."  method="POST">
         {% csrf_token %}
         
         {{ form.as_p }}
         
 
         <button type="submit" class="btn btn-danger" >Salvar</button>
-        <a href="{% url 'toda_list_saida' %}" class="btn btn-primary">Cancelar</a>
+        <a href="{% url 'todo_list' %}" class="btn btn-primary">Cancelar</a>
     </form>
 
 {% endblock content %}

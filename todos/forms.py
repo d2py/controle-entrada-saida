@@ -1,5 +1,5 @@
 from django import forms
-from todos.models import Entradamanutencao
+from todos.models import Entradamanutencao, RetiradaEquip
 
 
 STATUS = (
@@ -22,6 +22,10 @@ class EntradaEquipamentoForm(forms.ModelForm):
             "dataentrada",
         ]
 
+   
+
+
+    
     # Compos de Entrada dos Equipametos
 
     # Campos de Retirada
@@ -29,16 +33,8 @@ class EntradaEquipamentoForm(forms.ModelForm):
 
 class RetiradaEquip(forms.ModelForm):
     class Meta:
-        model = Entradamanutencao
-
+        model = RetiradaEquip
         fields = [
-            "requisicao",
-            "ano",
-            "local",
-            "patrimonio",
-            "solicitante",
-            "equipamento",
-            "dataentrada",
             "ret_ent",
             "data_saida",
             "responsavel",

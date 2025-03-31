@@ -50,8 +50,8 @@
                 <td> {{ todo.dataentrada }} </td>
                 
                 <td>
-                    <a href="" class="btn btn-secondary btn-sm" >Editar</a>
-                    <a href="{% url 'todo_concluido' pk=todo.pk %}" class="btn btn-primary btn-sm">Entregar</a>
+                    <a href="{% url 'editar_infor' pk=todo.pk%}" class="btn btn-secondary btn-sm" >Editar</a>
+                    <a href="" class="btn btn-primary btn-sm">Entregar</a>
                     <a href="#" ><input type="button" value="Pendente"></a>
                     <a href="#" ><input type="button" value="Baixa"></a>
                 </td>

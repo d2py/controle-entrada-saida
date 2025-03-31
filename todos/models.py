@@ -26,12 +26,17 @@ class Entradamanutencao(models.Model):
     dataconclusao = models.DateField(verbose_name="Data Conclusão", null=True)
     concluido = models.CharField(verbose_name="Concluido", max_length=1, null=True)
 
+    
+    
+    
+class RetiradaEquip(models.Model):   
+    Equipamanto = models.ForeignKey(Entradamanutencao, on_delete=models.CASCADE)
     ret_ent = models.CharField(
-        verbose_name="STATUS", max_length=1, choices=STATUS, null=True, default="------"
+        verbose_name="STATUS", max_length=1, choices=STATUS, null=False, default="------"
     )
-    data_saida = models.DateField(verbose_name="Data de Saída", null=True, blank=True)
+    data_saida = models.DateField(verbose_name="Data de Saída", null=False, blank=True, error_messages={'invalid': "Essa data não e valida"})
     responsavel = models.CharField(
         verbose_name="Responsavel", max_length=30, null=False, blank=False
     )
-    matricula = models.IntegerField(verbose_name="Matricula", null=True, blank=False)
-    retirado = models.IntegerField(verbose_name="retirado", null=True)
+    matricula = models.IntegerField(verbose_name="Matricula", null=False, blank=False)
+    
