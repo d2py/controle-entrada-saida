@@ -21,8 +21,8 @@ class Entradamanutencao(models.Model):
         verbose_name="Equipamento", max_length=30, null=False, blank=False
     )
     dataentrada = models.DateField(
-        verbose_name="Data de Entrada", null=False, blank=False
-    )
+        verbose_name="Data de Entrada", null=False, blank=False, error_messages={'invalid': "Essa data não e valida"})
+    
     dataconclusao = models.DateField(verbose_name="Data Conclusão", null=True)
     concluido = models.CharField(verbose_name="Concluido", max_length=1, null=True)
 
