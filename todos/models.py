@@ -8,12 +8,12 @@ STATUS = (
 
 
 class Entradamanutencao(models.Model):
-    requisicao = models.IntegerField(verbose_name="requisição", null=False, blank=False)
-    ano = models.IntegerField(verbose_name="Ano", null=False, blank=False)
+    requisicao = models.IntegerField(verbose_name="requisição", null=False, blank=False, max_length=6)
+    ano = models.IntegerField(verbose_name="Ano", null=False, blank=False, max_length=4)
     local = models.CharField(
         verbose_name="Local", max_length=30, null=False, blank=False
     )
-    patrimonio = models.IntegerField(verbose_name="Patrimônio", null=False, blank=False)
+    patrimonio = models.IntegerField(verbose_name="Patrimônio", null=False, blank=False, max_length=11)
     solicitante = models.CharField(
         verbose_name="Solicitante", max_length=30, null=False, blank=False
     )
@@ -38,5 +38,5 @@ class RetiradaEquip(models.Model):
     responsavel = models.CharField(
         verbose_name="Responsavel", max_length=30, null=False, blank=False
     )
-    matricula = models.IntegerField(verbose_name="Matricula", null=False, blank=False)
+    matricula = models.IntegerField(verbose_name="Matricula", null=False, blank=False, max_length=11)
     
