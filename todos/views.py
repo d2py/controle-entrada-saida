@@ -10,9 +10,14 @@ from .models import Entradamanutencao
 
 # List Prohibited
 def list_Prohibited(request):
-    list_Prohibited = get_object_or_404
-    list_Prohibited = Entradamanutencao.objects.all()
-    return render(request, "todos/list_entrada.html", {"Prohibited": list_Prohibited})
+    if request.method == "GET":
+        list_Prohibited = Entradamanutencao.objects.all()
+        return render(request, "todos/list_entrada.html", {"Prohibited": list_Prohibited})
+
+
+
+
+
 
 # Toda a lista
 def todo_list(request):
@@ -27,10 +32,7 @@ def entrada_eq(request):
         form = EntradaEquipamentoForm(request.POST)
         if form.is_valid():
             form.save()
-            
-            form = EntradaEquipamentoForm()
-            return redirect("entrada")
-        
+            return redirect("todo_list")       
     else:
         form = EntradaEquipamentoForm()
     return render(request, "todos/entrada_eq.html", {"form": form})
