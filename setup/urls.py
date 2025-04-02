@@ -18,4 +18,5 @@ urlpatterns = [
     path("entrada/", views.entrada_eq, name="entrada"),
     
     
+    
 ]

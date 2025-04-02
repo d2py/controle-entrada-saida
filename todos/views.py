@@ -16,9 +16,6 @@ def list_Prohibited(request):
 
 
 
-
-
-
 # Toda a lista
 def todo_list(request):
     if request.method == "GET":
