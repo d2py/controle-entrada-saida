@@ -12,7 +12,7 @@
 {% block ban %}
             <a href="{% url 'entrada'%}"># ENTRADA DO EQUIPAMENTO</a> <br>
             <a href="#"># PENDENTE POR FALTA DE PEÇA</a> <br>
-            <a href=""># PRONTO PARA ENTREGA</a>
+            <a href="{% url 'toda_list_saida'%}"># PRONTO PARA ENTREGA</a>
             <a href=""># EQUIPAMENTOS ENTREGUE/RETIRADO</a>
 {% endblock ban %}
 

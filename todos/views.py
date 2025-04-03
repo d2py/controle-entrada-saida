@@ -67,7 +67,7 @@ def get(request, pk):
 
 
 
-
+# Equipamentos prontos para ser entregue ao usuario 
 def lista_retirada(request):
     if request.method == "GET":
         todos = Entradamanutencao.objects.all()
@@ -100,12 +100,12 @@ def lista_retirada(request):
 
 def form_retirada(request):
     if request.method == "POST":
+        
         form = RetiradaEquip(request.POST)
-
-        if form.is_valid():
+        
+        if form.is_valid():  
             form.save()
-            todos = Entradamanutencao.objects.all()
-            return render(request, "todos/retirada_eq.html", {"todos": todos})
+            return redirect("ret")
 
     else:
         form = RetiradaEquip()

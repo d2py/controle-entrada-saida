@@ -35,6 +35,7 @@ class RetiradaEquip(forms.ModelForm):
     class Meta:
         model = RetiradaEquip
         fields = [
+            
             "ret_ent",
             "data_saida",
             "responsavel",
