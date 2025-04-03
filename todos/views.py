@@ -55,13 +55,14 @@ def editar_infor(request, pk):
 
 
 # Concluir um serviço
-def get(self, request, pk):
-    todo = get_object_or_404(Entradamanutencao, pk=pk)
-    todo.concluido = "concluido"
-    todo.dataconclusao = date.today()
-    todo.save()
-    todos = Entradamanutencao.objects.all()
-    return render(request, "todos/todo_list.html", {"todos": todos})
+def get(request, pk):
+    if request.method == "GET":
+        todo = get_object_or_404(Entradamanutencao, pk=pk)
+        todo.concluido = "concluido"
+        todo.dataconclusao = date.today()
+        todo.save()
+        todos = Entradamanutencao.objects.all()
+        return render(request, "todos/todo_list.html", {"todos": todos})
 
 
 

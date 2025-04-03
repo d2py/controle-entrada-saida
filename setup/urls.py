@@ -16,7 +16,8 @@ urlpatterns = [
     path("ret/", views.lista_retirada, name="toda_list_saida"),
     path("form_ret/", views.form_retirada, name="saida"),
     path("entrada/", views.entrada_eq, name="entrada"),
-    
+    path("pronto/<int:pk>", views.get,name="pronto_pr" ),
+
     
     
 ]
