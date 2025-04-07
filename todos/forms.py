@@ -2,12 +2,6 @@ from django import forms
 from todos.models import Entradamanutencao, RetiradaEquip
 
 
-STATUS = (
-    ("R", "Retirado"),
-    ("E", "Entregue"),
-)
-
-
 class EntradaEquipamentoForm(forms.ModelForm):
     class Meta:
         model = Entradamanutencao
@@ -31,11 +25,11 @@ class EntradaEquipamentoForm(forms.ModelForm):
     # Campos de Retirada
 
 
-class RetiradaEquip(forms.ModelForm):
+class RetiradaEquipForm(forms.ModelForm):
     class Meta:
         model = RetiradaEquip
         fields = [
-            
+            "equipamento",
             "ret_ent",
             "data_saida",
             "responsavel",

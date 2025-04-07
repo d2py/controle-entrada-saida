@@ -4,9 +4,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 
 
-from todos.forms import EntradaEquipamentoForm, RetiradaEquip
+from todos.forms import EntradaEquipamentoForm, RetiradaEquipForm
 
-from .models import Entradamanutencao
+from .models import Entradamanutencao, RetiradaEquip
 
 # List Prohibited
 def list_Prohibited(request):
@@ -100,15 +100,12 @@ def lista_retirada(request):
 
 def form_retirada(request):
     if request.method == "POST":
-        
-        form = RetiradaEquip(request.POST)
-        
-        if form.is_valid():  
+        form = RetiradaEquipForm(request.POST)        
+        if form.is_valid():             
             form.save()
             return redirect("ret")
-
     else:
-        form = RetiradaEquip()
+        form = RetiradaEquipForm()
     return render(request, "todos/retirada_form.html", {"form": form})
 
 

@@ -30,7 +30,7 @@ class Entradamanutencao(models.Model):
     
     
 class RetiradaEquip(models.Model):   
-    Equipamanto = models.ForeignKey(Entradamanutencao, on_delete=models.CASCADE)
+    equipamento = models.ForeignKey(Entradamanutencao, on_delete=models.CASCADE, verbose_name="equipamento", null=False)
     ret_ent = models.CharField(
         verbose_name="STATUS", max_length=1, choices=STATUS, null=False, default="------"
     )
