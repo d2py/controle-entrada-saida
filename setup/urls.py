@@ -14,7 +14,7 @@ urlpatterns = [
     path("pronto/<int:pk>", views.get,name="pronto_pr" ),
 
     path("ret/", views.lista_retirada, name="toda_list_saida"),
-    path("form_ret/", views.form_retirada, name="form_ret"),
+    path("retirada/", views.form_retirada, name="retirada"),
     
     
 ]

@@ -29,7 +29,7 @@ class RetiradaEquipForm(forms.ModelForm):
     class Meta:
         model = RetiradaEquip
         fields = [
-            "equipamento",
+            
             "ret_ent",
             "data_saida",
             "responsavel",
