@@ -98,16 +98,22 @@ def lista_retirada(request):
 
 
 
-def form_retirada(request):
-    
-    if request.method == "POST":
+def form_retirada(request, entradaEq_id=None):
+    entrada = None
+    if entradaEq_id:
+        entrada = get_object_or_404(RetiradaEquip, id=entradaEq_id)
+
+    if request.method == "POST":  
         
         form = RetiradaEquipForm(request.POST)        
-        if form.is_valid():             
+        if form.is_valid():            
             form.save()
             return redirect("ret")
     else:
-        form = RetiradaEquipForm()
+        if entrada:
+            form = RetiradaEquipForm(initial={'entrada':entrada})
+        else:    
+            form = RetiradaEquipForm()
     return render(request, "todos/criar_retirada.html", {"form": form})
 
 

@@ -30,7 +30,7 @@ class Entradamanutencao(models.Model):
     
     
 class RetiradaEquip(models.Model):   
-    equipamento = models.ForeignKey(Entradamanutencao, on_delete=models.CASCADE, verbose_name="equipamento", null=False)
+    equipamentoret_ent = models.ForeignKey(Entradamanutencao, on_delete=models.CASCADE, verbose_name="equipamento", null=False)
     ret_ent = models.CharField(
         verbose_name="STATUS", max_length=1, choices=STATUS, null=False, default="------"
     )
@@ -39,4 +39,5 @@ class RetiradaEquip(models.Model):
         verbose_name="Responsavel", max_length=30, null=False, blank=False
     )
     matricula = models.CharField(verbose_name="Matricula", null=False, blank=False, max_length=11)
+    
     
