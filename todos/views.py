@@ -79,41 +79,34 @@ def lista_retirada(request):
     for todo in todos:
         todo.pk
         id_pk = todo.pk
-        todo_pk = Entradamanutencao.objects.get(pk=id_pk)
+        todo_pk = RetiradaEquip.objects.get(equipamentoret_ent=id_pk)
 
-    entradamanutencao = get_object_or_404(Entradamanutencao, pk = todo_pk)   
+    form = get_object_or_404(RetiradaEquip, pk = todo_pk)   
     
     if request.method == 'POST':
-        form = RetiradaEquip(request.POST)
+        form = RetiradaEquipForm(request.POST)
         if form.is_valid():
             retirada = form.save(commit=False)
-            retirada = entradamanutencao.pk
+            retirada = form
             retirada.save()       
-            todos = Entradamanutencao.objects.all()
-            return render(request, 'todos/retirada_eq.html', {"todos":todos})
+            
+            return redirect("toda_list_saida")
     else:
-        form = RetiradaEquip()
-    return render(request, "todos/retirada_form.html", {'form': form})"""
+        form = RetiradaEquipForm()
+    return render(request, "todos/criar_retirada.html", {'form': form})"""
 
 
 
 
-def form_retirada(request, entradaEq_id=None):
-    entrada = None
-    if entradaEq_id:
-        entrada = get_object_or_404(RetiradaEquip, id=entradaEq_id)
+def form_retirada(request):
 
     if request.method == "POST":  
-        
         form = RetiradaEquipForm(request.POST)        
         if form.is_valid():            
             form.save()
             return redirect("ret")
-    else:
-        if entrada:
-            form = RetiradaEquipForm(initial={'entrada':entrada})
-        else:    
-            form = RetiradaEquipForm()
+    else:    
+        form = RetiradaEquipForm()
     return render(request, "todos/criar_retirada.html", {"form": form})
 
 

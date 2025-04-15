@@ -30,7 +30,7 @@ class Entradamanutencao(models.Model):
     
     
 class RetiradaEquip(models.Model):   
-    equipamentoret_ent = models.ForeignKey(Entradamanutencao, on_delete=models.CASCADE, verbose_name="equipamento", null=False)
+    equipamentoret_ent = models.OneToOneField(Entradamanutencao, on_delete=models.CASCADE, verbose_name="equipamento", null=False)
     ret_ent = models.CharField(
         verbose_name="STATUS", max_length=1, choices=STATUS, null=False, default="------"
     )
