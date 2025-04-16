@@ -10,9 +10,8 @@ from .models import Entradamanutencao, RetiradaEquip
 
 # List Prohibited
 def list_Prohibited(request):
-    if request.method == "GET":
-        list_Prohibited = Entradamanutencao.objects.all()
-        return render(request, "todos/list_entrada.html", {"Prohibited": list_Prohibited})
+    prohibited = Entradamanutencao.objects.filter(id).order_by("-id")
+    return render(request, "todos/list_entrada.html", {"prohibited": prohibited})
 
 
 
