@@ -73,31 +73,31 @@ def lista_retirada(request):
         return render(request, "todos/retirada_eq.html", {"todos": todos})
 
 
-"""def nova_retirada(request):       
-    todos = Entradamanutencao.objects.all()
-    for todo in todos:
-        todo.pk
-        id_pk = todo.pk
-        todo_pk = RetiradaEquip.objects.get(equipamentoret_ent=id_pk)
 
-    form = get_object_or_404(RetiradaEquip, pk = todo_pk)   
+def nova_retirada(request, pk):       
     
     if request.method == 'POST':
+        todo = get_object_or_404(Entradamanutencao, pk=pk)
+        ret = get_object_or_404(RetiradaEquip, pk)
+
+        ret.equipamentoret_ent = todo.pk  
+        todo.save()
+        equi= Entradamanutencao.objects.all()
         form = RetiradaEquipForm(request.POST)
         if form.is_valid():
-            retirada = form.save(commit=False)
-            retirada = form
-            retirada.save()       
+            usuario = form.save(commit=False)
+            usuario.equipamentoret_ent = equi
+            usuario.save()       
             
             return redirect("toda_list_saida")
     else:
-        form = RetiradaEquipForm()
-    return render(request, "todos/criar_retirada.html", {'form': form})"""
+        usuario = RetiradaEquipForm()
+    return render(request, "todos/criar_retirada.html", {'form': usuario})
 
 
 
 
-def form_retirada(request):
+"""def form_retirada(request):
 
     if request.method == "POST":  
         form = RetiradaEquipForm(request.POST)        
@@ -106,7 +106,7 @@ def form_retirada(request):
             return redirect("ret")
     else:    
         form = RetiradaEquipForm()
-    return render(request, "todos/criar_retirada.html", {"form": form})
+    return render(request, "todos/criar_retirada.html", {"form": form})"""
 
 
 
