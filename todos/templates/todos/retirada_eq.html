@@ -36,7 +36,7 @@
     {% for todo in todos %}
         <tr>
             
-            {% if todo.concluido == "concluido" and not todo.ret_ent == "R" and not todo.ret_ent == "E" %}
+            {% if todo.concluido == "concluido"  and not todo.ret_ent == "R" and not todo.ret_ent == "E"%}
                 
                 <td> {{ todo.requisicao }} </td>
                 <td> {{ todo.ano }} </td>
@@ -49,7 +49,7 @@
                 
                 <td>
                     <a href="" class="btn btn-secondary btn-sm" >Editar</a>
-                    <a href="{% url 'retirada' %}" class="btn btn-primary btn-sm" >Saída</a>
+                    <a href="{% url 'retirada' pk=todo.id %}" class="btn btn-primary btn-sm" >Saída</a>
                     
                 </td>
             {% else %}
