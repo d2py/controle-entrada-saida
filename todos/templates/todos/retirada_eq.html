@@ -36,7 +36,7 @@
     {% for todo in todos %}
         <tr>
             
-            {% if todo.concluido == "concluido"  and not todo.ret_ent == "R" and not todo.ret_ent == "E"%}
+            {% if todo.concluido == "concluido" %}
                 
                 <td> {{ todo.requisicao }} </td>
                 <td> {{ todo.ano }} </td>

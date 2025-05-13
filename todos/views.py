@@ -18,7 +18,7 @@ def list_Prohibited(request):
 # Toda a lista
 def todo_list(request):
     if request.method == "GET":
-        todos = Entradamanutencao.objects.all()
+        todos = Entradamanutencao.objects.all().order_by("-id")
         return render(request, "todos/todo_list.html", {"todos": todos})
 
 
@@ -69,16 +69,13 @@ def get(request, pk):
 # Equipamentos prontos para ser entregue ao usuario 
 def lista_retirada(request):
     if request.method == "GET":
-        todos = Entradamanutencao.objects.all()
+        todos = Entradamanutencao.objects.all().order_by("-id")
         return render(request, "todos/retirada_eq.html", {"todos": todos})
 
 
 
 def nova_retirada(request, pk):       
-    
-    ret = RetiradaEquip.objects.filter(equipamentoret_ent__id=pk)
     form = RetiradaEquipForm(request.POST  or None)
-
     if request.method == 'POST':    
         if form.is_valid():
             usuario = form.save(commit=False)
@@ -89,7 +86,6 @@ def nova_retirada(request, pk):
             return render(request, "todos/criar_retirada.html", {"form": form})
     context = {
         'form': form,
-        'ret':ret
     }
     return render(request, "todos/criar_retirada.html", context)
 
