@@ -76,8 +76,9 @@ def lista_retirada(request):
 
 def nova_retirada(request, pk):       
     form = RetiradaEquipForm(request.POST  or None)
+    
     if request.method == 'POST':    
-        if form.is_valid():
+        if form.is_valid(): 
             usuario = form.save(commit=False)
             usuario.equipamentoret_ent = get_object_or_404(Entradamanutencao, pk=pk)
             usuario.save()   
@@ -92,18 +93,7 @@ def nova_retirada(request, pk):
 
 
 
-"""def form_retirada(request, pk):
-    todo = Entradamanutencao.objects.get(id=pk)
-    ret = RetiradaEquip.objects.filter(equipamentoret_ent_id=pk)
-    form = RetiradaEquipForm(request.POST  or None)
-    if request.method == "POST":  
-        form = RetiradaEquipForm(request.POST)        
-        if form.is_valid():            
-            form.save()
-            return redirect("ret")
-    else:    
-        form = RetiradaEquipForm()
-    return render(request, "todos/criar_retirada.html", {"form": form})"""
+
 
 
 
